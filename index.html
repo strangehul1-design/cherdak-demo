@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Лофт-кафе «Чердак» — Снежинск</title>
+<meta name="description" content="Семейное лофт-кафе «Чердак», Снежинск. Обеды, ужины, банкеты, детские праздники и мастер-классы - цены и запись на одной странице.">
+<meta name="theme-color" content="#eeebe3">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --char:#171e19;
+  --red:#ca0013;
+  --sage:#b7c6c2;
+  --bg:#eeebe3;
+  --w:#ffffff;
+  --sh:0 20px 50px -12px rgba(0,0,0,.08);
+  --t:.25s ease-in-out;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--char);font:400 16px/1.5 Nunito,system-ui,sans-serif;padding-bottom:118px;-webkit-font-smoothing:antialiased}
+h1,h2,h3{margin:0;font-weight:900;letter-spacing:-.02em}
+p{margin:0}
+button{font:inherit;cursor:pointer}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:560px;margin:0 auto;padding:0 20px}
+.lbl{font:700 10px/1 Nunito,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--sage)}
+
+.hd{display:flex;align-items:center;gap:14px;padding:40px 0 20px}
+.hd__t .lbl{display:block;margin-bottom:5px}
+.hd__t b{font-size:30px;font-weight:900;line-height:1}
+.hd__r{margin-left:auto;position:relative;flex:none}
+.circle{width:48px;height:48px;border-radius:50%;background:var(--char);color:var(--w);border:2px solid var(--w);display:grid;place-items:center;font-size:11px;font-weight:800;line-height:1.1;text-align:center;box-shadow:var(--sh)}
+.badge{position:absolute;right:-2px;bottom:-2px;min-width:16px;height:16px;padding:0 4px;border-radius:9999px;background:var(--red);color:var(--w);font-size:9px;font-weight:800;display:grid;place-items:center;border:2px solid var(--bg)}
+
+.intro{font-size:16px;line-height:1.55;color:#5d5a55;margin-bottom:18px}
+
+/* селектор поводов */
+.cats{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 20px 14px;margin:0 -20px;scrollbar-width:none}
+.cats::-webkit-scrollbar{display:none}
+.cat{
+  flex:none;scroll-snap-align:start;width:56px;height:56px;border-radius:16px;background:var(--w);
+  border:1px solid rgba(183,198,194,.3);display:grid;place-items:center;font-size:23px;padding:0;
+  transition:width var(--t),background var(--t);
+}
+.cat[aria-selected="true"]{width:186px;background:var(--char);display:flex;align-items:center;gap:11px;padding:0 10px}
+.cat .pr{display:none}
+.cat[aria-selected="true"] .pr{display:grid;place-items:center;min-width:40px;height:40px;padding:0 8px;border-radius:9999px;background:var(--red);color:var(--w);font-size:13px;font-weight:800;flex:none;white-space:nowrap}
+.cat .ttl{display:none}
+.cat[aria-selected="true"] .ttl{display:block;color:var(--w);font-size:14px;font-weight:800;text-align:left;line-height:1.15}
+.cat[aria-selected="true"] .em{display:none}
+
+/* карточка повода */
+.hero{background:var(--w);border-radius:40px;padding:22px;box-shadow:var(--sh);position:relative;overflow:hidden;margin-bottom:22px}
+.blob{position:absolute;right:-50px;top:-50px;width:170px;height:170px;border-radius:50%;background:rgba(183,198,194,.2)}
+.hero__top{display:flex;align-items:center;gap:13px;position:relative}
+.ico{width:64px;height:64px;border-radius:20px;background:var(--bg);display:grid;place-items:center;font-size:30px;flex:none}
+.hero h2{font-size:22px;line-height:1.15;margin-top:3px}
+.hero .price{font-size:27px;font-weight:900;margin-top:14px}
+.hero .price small{font-size:14px;font-weight:700;color:var(--sage);display:block;margin-top:2px}
+.bento{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.bcard{background:rgba(255,255,255,.8);backdrop-filter:blur(6px);border:1px solid rgba(183,198,194,.3);border-radius:16px;padding:12px;display:flex;align-items:center;gap:10px}
+.bcard .c{width:32px;height:32px;border-radius:50%;background:rgba(202,0,19,.1);display:grid;place-items:center;font-size:15px;flex:none}
+.bcard .lbl{display:block;margin-bottom:3px}
+.bcard b{font-size:14px;font-weight:800}
+.info{margin-top:14px;background:rgba(183,198,194,.2);border-radius:16px;padding:13px 15px;font-size:13px;line-height:1.5;font-weight:600}
+
+.sec__t{display:flex;align-items:baseline;gap:9px;margin:26px 0 13px}
+.sec__t h3{font-size:20px}
+.sec__t span{font-size:13px;font-weight:700;color:var(--sage)}
+.list{display:flex;flex-direction:column;gap:11px}
+.row{background:var(--w);border:1px solid rgba(183,198,194,.3);border-radius:24px;padding:12px;display:flex;align-items:center;gap:13px;transition:border-color var(--t)}
+.row .ph{width:56px;height:56px;border-radius:16px;background:rgba(183,198,194,.18);display:grid;place-items:center;font-size:23px;flex:none}
+.row .m{min-width:0;flex:1}
+.row h4{margin:0;font-size:17px;font-weight:800;line-height:1.2}
+.row .sub{font-size:13px;font-weight:600;color:var(--sage);margin-top:3px}
+.row .pr{font-size:16px;font-weight:900;white-space:nowrap}
+.chk{width:40px;height:40px;border-radius:50%;border:1px solid rgba(183,198,194,.5);background:var(--w);color:var(--sage);display:grid;place-items:center;flex:none;font-size:18px;font-weight:800;transition:background var(--t),color var(--t),border-color var(--t)}
+.row.on{border-color:var(--red)}
+.row.on .chk{background:var(--red);border-color:var(--red);color:var(--w)}
+
+.card{background:var(--w);border-radius:40px;padding:26px;box-shadow:var(--sh);margin-top:28px}
+.card h3{font-size:20px}
+.card p{font-size:14px;font-weight:600;color:#5d5a55;margin-top:10px;line-height:1.55}
+.card ul{list-style:none;margin:14px 0 0;padding:0}
+.card li{display:flex;gap:10px;padding:7px 0;font-size:15px;font-weight:600;border-bottom:1px solid rgba(183,198,194,.3)}
+.card li:last-child{border-bottom:none}
+.card li i{font-style:normal;color:var(--red);font-weight:800}
+
+.draft{border:1px dashed rgba(202,0,19,.35);border-radius:24px;padding:18px 20px;margin-top:22px;font-size:13px;line-height:1.6;font-weight:600;color:#6a6560}
+.draft b{color:var(--red);font-weight:800}
+
+.bar{position:fixed;left:8px;right:8px;bottom:8px;height:64px;border-radius:9999px;background:var(--char);display:flex;align-items:center;justify-content:space-around;z-index:60;max-width:544px;margin:0 auto}
+.bar button{width:48px;height:48px;border:none;background:none;color:var(--sage);display:grid;place-items:center;border-radius:50%;transition:color var(--t)}
+.bar button.on{color:var(--w)}
+.fab{width:56px;height:56px;border-radius:50%;background:var(--red);color:var(--w);border:4px solid var(--bg);display:grid;place-items:center;margin-top:-32px;flex:none;position:relative;box-shadow:0 10px 24px rgba(202,0,19,.3);transition:transform var(--t)}
+.fab .cnt{position:absolute;right:-3px;top:-3px;min-width:20px;height:20px;padding:0 5px;border-radius:9999px;background:var(--char);color:var(--w);font-size:11px;font-weight:800;display:grid;place-items:center;border:2px solid var(--bg)}
+
+dialog{border:none;border-radius:40px 40px 0 0;padding:0;background:var(--bg);color:var(--char);width:100%;max-width:560px;margin:auto auto 0}
+dialog::backdrop{background:rgba(23,30,25,.4)}
+dialog[open]{animation:up .25s ease-in-out}
+@keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.sheet{padding:26px 20px 30px}
+.grab{width:44px;height:4px;border-radius:9999px;background:var(--sage);margin:0 auto 18px}
+.sheet h3{font-size:22px;margin-bottom:14px}
+.ord{background:var(--w);border-radius:24px;padding:6px 16px;border:1px solid rgba(183,198,194,.3)}
+.ord div{display:flex;justify-content:space-between;gap:12px;padding:11px 0;font-size:15px;font-weight:700;border-bottom:1px solid rgba(183,198,194,.3)}
+.ord div:last-child{border-bottom:none}
+.ord span{color:#6a6560;font-weight:600;min-width:0}
+label{display:block;margin-top:14px}
+label span{display:block;font:700 10px Nunito,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--sage);margin-bottom:6px}
+input,select{width:100%;border:1px solid rgba(183,198,194,.45);border-radius:9999px;background:var(--w);padding:13px 18px;font:600 15px Nunito,sans-serif;color:var(--char);transition:border-color var(--t)}
+input:focus,select:focus{outline:none;border-color:var(--char)}
+.btn{width:100%;margin-top:16px;border:none;border-radius:9999px;background:var(--red);color:var(--w);padding:17px;font-size:16px;font-weight:800;transition:filter var(--t)}
+.btn.sec{background:var(--w);color:var(--char);border:1px solid rgba(183,198,194,.5);margin-top:10px}
+
+@media (hover:hover) and (pointer:fine){
+  .chk:hover{background:var(--red);border-color:var(--red);color:var(--w)}
+  .fab:hover{transform:scale(1.05)}
+  .btn:hover{filter:brightness(1.07)}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition-duration:.01ms!important}
+  dialog[open]{animation:none}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="hd">
+    <div class="hd__t">
+      <span class="lbl">Лофт-кафе · Снежинск</span>
+      <b>Чердак</b>
+    </div>
+    <div class="hd__r">
+      <div class="circle">семей<br>ное</div>
+      <span class="badge">9</span>
+    </div>
+  </header>
+
+  <p class="intro">Девять форматов под разные поводы - от обеда за 250 ₽ до детского праздника. Выберите свой, посмотрите цену и запишитесь.</p>
+</div>
+
+<div class="wrap"><div class="cats" id="cats"></div></div>
+
+<main class="wrap">
+  <section class="hero">
+    <div class="blob"></div>
+    <div class="hero__top">
+      <div class="ico" id="hIco">🍽️</div>
+      <div>
+        <span class="lbl" id="hLab">Формат</span>
+        <h2 id="hT"></h2>
+      </div>
+    </div>
+    <div class="price" id="hP"></div>
+    <div class="bento">
+      <div class="bcard"><div class="c">👥</div><div><span class="lbl">Кому</span><b id="hWho">—</b></div></div>
+      <div class="bcard"><div class="c">🕑</div><div><span class="lbl">Когда</span><b id="hWhen">—</b></div></div>
+    </div>
+    <div class="info" id="hInfo"></div>
+  </section>
+
+  <div class="sec__t"><h3>Все форматы</h3><span>9 позиций</span></div>
+  <div class="list" id="list"></div>
+
+  <section class="card">
+    <h3>Что есть на Чердаке</h3>
+    <p>То, что вы пишете о себе в сообществе - собрано в одном месте, а не растворено в описании.</p>
+    <ul>
+      <li><i>·</i>Детская комната, пока родители отдыхают</li>
+      <li><i>·</i>Настольные игры и живая музыка</li>
+      <li><i>·</i>Блюда мировых кухонь и карта бара</li>
+      <li><i>·</i>Живые цветы в интерьере</li>
+    </ul>
+  </section>
+
+  <div class="draft">
+    <b>Что здесь настоящее.</b> Все девять форматов и цены взяты из ваших товаров ВКонтакте. Состав каждого формата в открытом доступе не расписан - строки «кому» и «когда» я поставил по смыслу, вы их поправите.
+  </div>
+
+  <div class="draft" style="border-color:rgba(183,198,194,.6)">
+    Сейчас эти девять позиций видит только тот, кто листает товары. Человек, который ищет «где отметить день рождения ребёнка в Снежинске», до них не доходит - в поиске вас нет, а ссылку на товары не перешлёшь.
+  </div>
+</main>
+
+<nav class="bar">
+  <button class="on" aria-label="Форматы" onclick="window.scrollTo({top:0})">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+  </button>
+  <button aria-label="Телефон" onclick="location.href='tel:+79823120102'">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 4h3l1.6 4-2 1.4a12 12 0 0 0 5.6 5.6l1.4-2 4 1.6v3a2 2 0 0 1-2.2 2A16 16 0 0 1 3 6.2 2 2 0 0 1 5 4z"/></svg>
+  </button>
+  <button class="fab" id="fab" aria-label="Записаться">
+    <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M8 3v4M16 3v4M4 9h16M5 5h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/></svg>
+    <span class="cnt" id="cnt">0</span>
+  </button>
+  <button aria-label="ВКонтакте" onclick="location.href='https://vk.ru/cherdaksnz'">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M8 10c.6 3 2.2 4.6 4.5 4.6V10"/></svg>
+  </button>
+  <button aria-label="Детская комната" onclick="document.querySelector('.card').scrollIntoView()">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 4l8 5-8 5-8-5z"/><path d="M6 12v4c0 1.5 2.7 3 6 3s6-1.5 6-3v-4"/></svg>
+  </button>
+</nav>
+
+<dialog id="dlg">
+  <div class="sheet" id="s1">
+    <div class="grab"></div>
+    <h3 id="dT">Запись</h3>
+    <div class="ord" id="ord"></div>
+    <label><span>Дата</span><input id="fd" type="date"></label>
+    <label><span>Сколько человек</span><input id="fg" type="text" inputmode="numeric" placeholder="8"></label>
+    <label><span>Телефон</span><input id="fp" type="tel" placeholder="+7"></label>
+    <button class="btn" id="send">Отправить заявку</button>
+    <button class="btn sec" onclick="document.querySelector('#dlg').close()">Закрыть</button>
+  </div>
+  <div class="sheet" id="s2" hidden>
+    <div class="grab"></div>
+    <span class="lbl" style="color:var(--red)">Заявка принята</span>
+    <h3 style="margin-top:8px">Перезвоним и всё обсудим</h3>
+    <div class="ord" id="okR"></div>
+    <button class="btn sec" onclick="document.querySelector('#dlg').close()">Хорошо</button>
+  </div>
+</dialog>
+
+<script>
+/* FORM_CONFIG - в рабочей версии заявка уходит в Telegram. В демо форма ничего не отправляет. */
+const FORM_CONFIG = { mode:"demo", telegram_token:"", chat_id:"" };
+
+/* Форматы и цены настоящие, из товаров сообщества ВКонтакте.
+   Строки «кому» и «когда» - черновые, в открытом доступе их нет. */
+const F = [
+  { em:"🍲", t:"Бизнес-обед", p:250, unit:"с человека", who:"тем, кто рядом работает", when:"будни, днём",
+    info:"Самый частый повод зайти. На странице он стоит первым, потому что его ищут чаще всего." },
+  { em:"🥧", t:"Пироги на заказ", p:350, unit:"от", who:"на дом и в офис", when:"по предзаказу",
+    info:"Заказывают к чаю на работу и на семейные поводы. Нужен срок предзаказа - поставим ваш." },
+  { em:"🕯️", t:"Поминальный обед", p:350, unit:"с человека", who:"семье и близким", when:"по договорённости",
+    info:"Тихий формат, о котором спрашивают по телефону. Пусть условия будут написаны заранее." },
+  { em:"🎈", t:"Детский праздник", p:450, unit:"с ребёнка", who:"детям и родителям", when:"выходные",
+    info:"У вас есть детская комната - это сильный аргумент, который сейчас спрятан в описании." },
+  { em:"👩‍🍳", t:"Кулинарный мастер-класс", p:450, unit:"с участника", who:"детям и взрослым", when:"по расписанию",
+    info:"Формат, которого нет у соседей. Его стоит показывать отдельно, с датами ближайших занятий." },
+  { em:"🍷", t:"Ужин в будни", p:650, unit:"с человека", who:"парам и компаниям", when:"будни, вечером",
+    info:"Вечерний чек выше дневного. Здесь уместны блюда мировых кухонь и карта бара." },
+  { em:"🥂", t:"Фуршетное меню", p:900, unit:"с человека", who:"компаниям и организациям", when:"по заявке",
+    info:"Фуршет берут, когда нужно быстро и без рассадки. Состав согласуем заранее." },
+  { em:"🎉", t:"Банкет", p:2000, unit:"с человека", who:"свадьбы, юбилеи, корпоративы", when:"по брони",
+    info:"Главный формат по сумме. Под него нужна отдельная страница с залом, меню и свободными датами." },
+  { em:"🎂", t:"Детский комплекс", p:5500, unit:"за программу", who:"на весь праздник", when:"по брони",
+    info:"Комплекс под ключ. Что именно входит, стоит расписать - это снимает половину вопросов." }
+];
+
+const $ = s => document.querySelector(s);
+const picked = new Set();
+let active = 0;
+
+$("#cats").innerHTML = F.map((f,i) =>
+  `<button class="cat" data-i="${i}" aria-selected="${i===active}" aria-label="${f.t}">
+     <span class="em">${f.em}</span>
+     <span class="pr">${f.p >= 1000 ? (f.p/1000) + "к" : f.p} ₽</span>
+     <span class="ttl">${f.t}</span>
+   </button>`).join("");
+
+function hero(){
+  const f = F[active];
+  $("#hIco").textContent = f.em;
+  $("#hLab").textContent = "Формат · " + (active+1) + " из 9";
+  $("#hT").textContent = f.t;
+  $("#hP").innerHTML = f.p.toLocaleString('ru') + " ₽<small>" + f.unit + "</small>";
+  $("#hWho").textContent = f.who;
+  $("#hWhen").textContent = f.when;
+  $("#hInfo").textContent = f.info;
+}
+
+function list(){
+  $("#list").innerHTML = F.map((f,i) => {
+    const on = picked.has(i);
+    return `<div class="row ${on?'on':''}">
+      <div class="ph">${f.em}</div>
+      <div class="m"><h4>${f.t}</h4><div class="sub">${f.unit}</div></div>
+      <span class="pr">${f.p.toLocaleString('ru')} ₽</span>
+      <button class="chk" data-i="${i}" aria-label="${on?'Убрать':'Выбрать'}">${on?'✓':'+'}</button>
+    </div>`;
+  }).join("");
+}
+
+$("#cats").addEventListener("click", e => {
+  const b = e.target.closest(".cat"); if(!b) return;
+  active = +b.dataset.i;
+  document.querySelectorAll(".cat").forEach(c => c.setAttribute("aria-selected", +c.dataset.i === active));
+  hero();
+});
+
+$("#list").addEventListener("click", e => {
+  const b = e.target.closest(".chk"); if(!b) return;
+  const i = +b.dataset.i;
+  picked.has(i) ? picked.delete(i) : picked.add(i);
+  $("#cnt").textContent = picked.size;
+  list();
+});
+
+$("#fab").addEventListener("click", () => {
+  const items = picked.size ? [...picked] : [active];
+  $("#dT").textContent = picked.size > 1 ? "Запись на несколько форматов" : "Запись";
+  $("#ord").innerHTML = items.map(i => `<div><span>${F[i].t}</span><b>${F[i].p.toLocaleString('ru')} ₽</b></div>`).join("");
+  $("#s1").hidden = false; $("#s2").hidden = true;
+  $("#dlg").showModal();
+});
+
+$("#send").addEventListener("click", () => {
+  const items = picked.size ? [...picked] : [active];
+  $("#okR").innerHTML = `
+    <div><span>Формат</span><b>${items.map(i => F[i].t).join(", ")}</b></div>
+    <div><span>Дата</span><b>${$("#fd").value || "уточним"}</b></div>
+    <div><span>Человек</span><b>${$("#fg").value.trim() || "уточним"}</b></div>
+    <div><span>Телефон</span><b>${$("#fp").value.trim() || "не указан"}</b></div>
+    <div><span>Статус</span><b>демо, не отправлено</b></div>`;
+  $("#s1").hidden = true; $("#s2").hidden = false;
+});
+
+hero(); list();
+</script>
+</body>
+</html>
